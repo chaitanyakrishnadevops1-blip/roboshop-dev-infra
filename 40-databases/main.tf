@@ -29,7 +29,7 @@ resource "aws_instance" "mongodb" {
   provisioner "remote-exec" {
      inline = [ 
         "echo Hello world"
-      ]
+    ]
   }
 }
 
