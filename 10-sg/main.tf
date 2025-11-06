@@ -1,7 +1,30 @@
-module "catalogue" {
-  source = "terraform-aws-modules/security-group/aws"
+# using open source module
+# module "catalogue" {
+#   source = "terraform-aws-modules/security-group/aws"
 
-  name        = "${local.common_suffix}-catalogue"
-  description = "Security group for catalogue with custom ports open within VPC, egress all traffic"
-  vpc_id      = "vpc-12345678"  
+#   name        = "${local.common_suffix}-catalogue"
+#   description = "Security group for catalogue with custom ports open within VPC, egress all traffic"
+#   vpc_id      = data.aws_ssm_parameter.vpc_id.value
+# }
+
+
+module "sg" {
+  count = length(var.sg_names)
+  source = "git::https://github.com/chaitanyakrishnadevops1-blip/terraform-aws-sg?ref=main"
+
+  project_name = var.project_name
+  environment = var.environment
+  sg_name = var.sg_names[count.index]
+  sg_description = "Created for ${var.sg_names[count.index]}"
+  vpc_id = local.vpc_id
 }
+
+# frontend accept traffic from front-end ALB
+# resource "aws_security_group_rule" "frontend_frontend_alb" {
+#   type              = "ingress"
+#   security_group_id = module.sg[9].sg_id # frontend security id
+#   source_security_group_id =   module.sg[11].sg_id   # frontend load balancer sgid   
+#   from_port         = 80 
+#   protocol          = "tcp"
+#   to_port           = 80
+# }
