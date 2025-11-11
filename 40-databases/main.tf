@@ -42,6 +42,8 @@ resource "aws_instance" "mongodb" {
   }
 }
 
+
+
 resource "aws_instance" "redis" {
   ami = local.ami_id
   instance_type = "t3.micro"
