@@ -30,6 +30,8 @@ else
 fi 
  ansible-playbook -e  component=$component main.yaml
 
+ 
+
 
 
 
