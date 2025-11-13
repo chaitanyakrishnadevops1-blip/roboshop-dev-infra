@@ -35,7 +35,7 @@ resource "aws_instance" "mongodb" {
   # terraform copies this file to mongodb server
   provisioner "remote-exec" {
      inline = [ 
-        "chmod +x /tmp/bootstrap.sh",,
+        "chmod +x /tmp/bootstrap.sh",
         # "sudo sh /tmp/bootstrap.sh"
         "sudo sh /tmp/bootstrap.sh mongodb"
         
