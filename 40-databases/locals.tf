@@ -8,10 +8,12 @@ locals{
     ami_id = data.aws_ami.joindevops.id
     common_tags = {
         project = var.project_name
-        Environment = var.environment
+        Environment = var.Environment
         Terraform = "true"
     }
 }
+
+
 
 
 

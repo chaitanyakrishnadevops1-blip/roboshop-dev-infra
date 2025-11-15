@@ -26,3 +26,12 @@ variable "sg_names" {
 }
 
 
+variable "zone_id" {
+  default = "Z072528332LMC00MTJ70B"
+  
+}
+
+variable "domain_name" {
+  default = "daws-86s.store"
+  
+}
