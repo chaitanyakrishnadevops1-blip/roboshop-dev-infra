@@ -41,7 +41,7 @@ resource "aws_instance" "catalogue" {
      inline = [ 
         "chmod +x /tmp/catalogue.sh",
         # "sudo sh /tmp/catalogue.sh"
-        "sudo sh /tmp/catalogue.sh catalogue"
+        "sudo sh /tmp/catalogue.sh catalogue ${var.environment}"
         
     ]
   }
