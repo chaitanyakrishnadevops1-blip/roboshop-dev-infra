@@ -46,3 +46,4 @@ resource "aws_instance" "catalogue" {
     ]
   }
 }
+
